@@ -10,7 +10,10 @@
 	}
 	, "main": "index.js"
 	, "dependencies": {
-		"node-syslog": "1"
+		"ain2": "0.2.1"
+	},
+	"dev-dependencies": {
+		"log4js": "0.4.1"
 	}
 	, "engines": { "node": "<0.5.0" }
 }
