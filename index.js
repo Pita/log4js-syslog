@@ -1,5 +1,12 @@
-var log4js = require('log4js');
-var syslog = require("ain2");
+var log4js       = require('log4js');
+var syslog       = require("ain2");
+var events       = new require('events');
+
+//create eventEmitter and export it
+var eventEmitter = new events.EventEmitter();
+exports.on = function(){
+  eventEmitter.on.apply(eventEmitter, arguments);
+}
 
 //set the name
 exports.name = "syslog";
@@ -30,6 +37,13 @@ exports.appender = function(config)
   //create a new logger and apply the config
   var logger = syslog.get();
   logger.set(config);
+  
+  //overwrite logError so we can fire an event on send events
+  var _logError = logger._logError;
+  logger._logError = function(){
+    eventEmitter.emit("sended");
+    _logError.apply(logger, arguments);
+  }
   
   //return the logging function
   return function(loggingEvent)
