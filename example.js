@@ -6,6 +6,6 @@ log4js.addAppender(lsyslog.appender(), 'syslog');
 
 var logger = log4js.getLogger('syslog');
 
-logger.info('info log');
-logger.debug('debug log');
-logger.error('error log');
+logger.info('info log', 'info log 2');
+logger.debug('debug log', 'debug log 2');
+logger.error('error log', 'error log 2');
