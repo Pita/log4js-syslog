@@ -10,7 +10,7 @@
 	}
 	, "main": "index.js"
 	, "dependencies": {
-		"node-syslog": "https://github.com/Pita/node-syslog/tarball/master"
+		"node-syslog": "1.1.1"
 	},
 	"dev-dependencies": {
 		"log4js": "0.4.1"
